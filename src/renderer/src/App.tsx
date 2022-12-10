@@ -1,1 +1,3 @@
-export const App: React.FC = () => <h1>Hello World</h1>;
+export const App: React.FC = () => (
+  <h1 style={{ fontFamily: "Inter, sans-serif" }}>Hello World</h1>
+);
