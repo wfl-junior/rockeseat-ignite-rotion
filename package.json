@@ -1,10 +1,10 @@
 {
   "name": "rotion",
   "productName": "Rotion",
-  "version": "1.0.0",
-  "description": "An Electron application with React and TypeScript",
+  "version": "0.1.0",
+  "description": "A Notion alternative written with Electron",
   "main": "./out/main/index.js",
-  "author": "example.com",
+  "author": "Wallace Júnior",
   "homepage": "https://www.electronjs.org",
   "license": "ISC",
   "scripts": {
@@ -19,7 +19,8 @@
     "lint": "eslint src --ext .ts,.tsx",
     "lint:fix": "eslint src --ext .ts,.tsx --fix",
     "prettier": "prettier --check src",
-    "prettier:fix": "prettier --write src"
+    "prettier:fix": "prettier --write src",
+    "release": "electron-builder --publish always"
   },
   "dependencies": {
     "@electron-toolkit/preload": "^1.0.2",
@@ -43,6 +44,8 @@
     "prosemirror-history": "^1.3.0",
     "prosemirror-keymap": "^1.2.0",
     "prosemirror-schema-list": "^1.2.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.5"
   },
   "devDependencies": {
@@ -65,8 +68,6 @@
     "postcss": "^8.4.19",
     "prettier": "^2.8.1",
     "prettier-plugin-tailwindcss": "^0.2.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "tailwind-scrollbar": "^2.0.1",
     "tailwindcss": "^3.2.4",
     "typescript": "^4.9.3",
