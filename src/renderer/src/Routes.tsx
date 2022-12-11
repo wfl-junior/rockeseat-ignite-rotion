@@ -8,7 +8,7 @@ export const Routes: React.FC = () => (
     main={
       <Route path="/" element={<DefaultLayout />}>
         <Route index element={<Blank />} />
-        <Route path="/document" element={<Document />} />
+        <Route path="/documents/:id" element={<Document />} />
       </Route>
     }
   />

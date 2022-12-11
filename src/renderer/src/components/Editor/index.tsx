@@ -5,9 +5,11 @@ import Typography from "@tiptap/extension-typography";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 
-interface EditorProps {}
+interface EditorProps {
+  content: string;
+}
 
-export const Editor: React.FC<EditorProps> = () => {
+export const Editor: React.FC<EditorProps> = ({ content }) => {
   const editor = useEditor({
     extensions: [
       StarterKit.configure({ document: false }),
@@ -23,7 +25,7 @@ export const Editor: React.FC<EditorProps> = () => {
       }),
     ],
     autofocus: "end",
-    content: "",
+    content,
     editorProps: {
       attributes: {
         class: "focus:outline-none prose prose-invert prose-headings:mt-0",
