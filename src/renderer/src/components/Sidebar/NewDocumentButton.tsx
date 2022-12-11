@@ -1,9 +1,12 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Plus } from "phosphor-react";
+import { useNavigate } from "react-router-dom";
 import type { Document } from "~/shared/types/ipc";
+import { QueryKeys } from "../../lib/react-query";
 
 export const NewDocumentButton: React.FC = () => {
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
   const { isLoading: isCreatingNewDocument, mutateAsync: createDocument } =
     useMutation(
       async () => {
@@ -13,7 +16,7 @@ export const NewDocumentButton: React.FC = () => {
       {
         onSuccess: newDocument => {
           queryClient.setQueryData<Document[]>(
-            ["documents"],
+            [QueryKeys.DOCUMENTS],
             (documents = []) => [...documents, newDocument],
           );
         },
@@ -21,7 +24,8 @@ export const NewDocumentButton: React.FC = () => {
     );
 
   async function handleCreateNewDocument() {
-    await createDocument();
+    const { id } = await createDocument();
+    navigate(`/documents/${id}`);
   }
 
   return (

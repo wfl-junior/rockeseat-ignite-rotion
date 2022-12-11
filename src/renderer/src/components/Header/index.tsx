@@ -5,6 +5,7 @@ import { CaretDoubleRight, Code, TrashSimple } from "phosphor-react";
 import { Fragment } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import type { Document } from "~/shared/types/ipc";
+import { QueryKeys } from "../../lib/react-query";
 import * as Breadcrumbs from "./Breadcrumbs";
 
 interface HeaderProps {
@@ -23,7 +24,7 @@ export const Header: React.FC<HeaderProps> = ({ isSidebarOpen }) => {
       {
         onSuccess: () => {
           queryClient.setQueryData<Document[]>(
-            ["documents"],
+            [QueryKeys.DOCUMENTS],
             (documents = []) => {
               return documents.filter(document => document.id !== id);
             },
