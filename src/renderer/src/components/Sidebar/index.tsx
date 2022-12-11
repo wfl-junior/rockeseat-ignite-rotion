@@ -2,13 +2,14 @@ import * as Collapsible from "@radix-ui/react-collapsible";
 import { useQuery } from "@tanstack/react-query";
 import clsx from "clsx";
 import { CaretDoubleLeft } from "phosphor-react";
+import { QueryKeys } from "../../lib/react-query";
 import * as Navigation from "./Navigation";
 import { NewDocumentButton } from "./NewDocumentButton";
 import { Profile } from "./Profile";
 import { Search } from "./Search";
 
 export function Sidebar() {
-  const { data } = useQuery(["documents"], async () => {
+  const { data: documents } = useQuery([QueryKeys.DOCUMENTS], async () => {
     const { documents } = await window.api.documents.getAll();
     return documents;
   });
@@ -46,7 +47,7 @@ export function Sidebar() {
             <Navigation.Section>
               <Navigation.SectionTitle>Workspace</Navigation.SectionTitle>
               <Navigation.SectionContent>
-                {data?.map(({ id, title }) => (
+                {documents?.map(({ id, title }) => (
                   <Navigation.Link key={id} href={`/documents/${id}`}>
                     {title}
                   </Navigation.Link>
