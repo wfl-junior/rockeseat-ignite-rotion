@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Plus } from "phosphor-react";
+import { useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import type { Document } from "~/shared/types/ipc";
 import { QueryKeys } from "../../lib/react-query";
@@ -23,10 +24,20 @@ export const NewDocumentButton: React.FC = () => {
       },
     );
 
-  async function handleCreateNewDocument() {
+  const handleCreateNewDocument = useCallback(async () => {
     const { id } = await createDocument();
     navigate(`/documents/${id}`);
-  }
+  }, [createDocument, navigate]);
+
+  useEffect(() => {
+    const unsubscribe = window.api.onNewDocumentRequest(
+      handleCreateNewDocument,
+    );
+
+    return () => {
+      unsubscribe();
+    };
+  }, [handleCreateNewDocument]);
 
   return (
     <button
