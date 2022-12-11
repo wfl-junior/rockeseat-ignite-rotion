@@ -1,8 +1,24 @@
-import { Link } from "react-router-dom";
+import { ToC } from "../components/ToC";
 
 export const Document: React.FC = () => (
-  <main className="text-rotion-400 flex flex-1 items-center justify-center">
-    Documento
-    <Link to="/">Acessar blank</Link>
+  <main className="flex flex-1 gap-8 py-12 px-10">
+    <aside className="sticky top-0 hidden lg:block">
+      <span className="text-rotion-300 text-xs font-semibold uppercase">
+        Table of Contents
+      </span>
+
+      <ToC.Root>
+        <ToC.Link>Back-end</ToC.Link>
+
+        <ToC.Section>
+          <ToC.Link>Banco de dados</ToC.Link>
+          <ToC.Link>Autenticação</ToC.Link>
+        </ToC.Section>
+      </ToC.Root>
+    </aside>
+
+    <section className="flex flex-1 flex-col items-center">
+      qualquer coisa
+    </section>
   </main>
 );
