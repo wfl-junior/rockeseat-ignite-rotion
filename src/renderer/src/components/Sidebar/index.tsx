@@ -8,7 +8,10 @@ import { Profile } from "./Profile";
 import { Search } from "./Search";
 
 export function Sidebar() {
-  const { data } = useQuery(["documents"], () => window.api.getDocuments());
+  const { data } = useQuery(["documents"], async () => {
+    const { documents } = await window.api.getAllDocuments();
+    return documents;
+  });
 
   const isMacOS = process.platform === "darwin";
 

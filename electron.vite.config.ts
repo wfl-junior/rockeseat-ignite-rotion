@@ -7,9 +7,19 @@ export default defineConfig({
   main: {
     plugins: [externalizeDepsPlugin()],
     publicDir: path.resolve(__dirname, "resources"),
+    resolve: {
+      alias: {
+        "~": path.resolve(__dirname, "src"),
+      },
+    },
   },
   preload: {
     plugins: [externalizeDepsPlugin()],
+    resolve: {
+      alias: {
+        "~": path.resolve(__dirname, "src"),
+      },
+    },
   },
   renderer: {
     define: {
@@ -26,7 +36,7 @@ export default defineConfig({
     },
     resolve: {
       alias: {
-        "@renderer": path.resolve("src/renderer/src"),
+        "~": path.resolve(__dirname, "src"),
       },
     },
     plugins: [react()],
