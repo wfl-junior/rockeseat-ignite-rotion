@@ -1,5 +1,6 @@
 import { electronApp, is, optimizer } from "@electron-toolkit/utils";
 import { app, BrowserWindow, shell } from "electron";
+import { createFileRoute, createURLRoute } from "electron-router-dom";
 import path from "node:path";
 
 function createWindow(): void {
@@ -32,10 +33,21 @@ function createWindow(): void {
     return { action: "deny" };
   });
 
+  const id = "main";
+  const devServerURL = createURLRoute(
+    process.env["ELECTRON_RENDERER_URL"]!,
+    id,
+  );
+
+  const fileRoute = createFileRoute(
+    path.join(__dirname, "..", "renderer", "index.html"),
+    id,
+  );
+
   if (is.dev && process.env.ELECTRON_RENDERER_URL) {
-    mainWindow.loadURL(process.env.ELECTRON_RENDERER_URL);
+    mainWindow.loadURL(devServerURL);
   } else {
-    mainWindow.loadFile(path.join(__dirname, "../renderer/index.html"));
+    mainWindow.loadFile(...fileRoute);
   }
 }
 
