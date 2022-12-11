@@ -1,3 +1,4 @@
+import { Editor } from "../components/Editor";
 import { ToC } from "../components/ToC";
 
 export const Document: React.FC = () => (
@@ -18,7 +19,7 @@ export const Document: React.FC = () => (
     </aside>
 
     <section className="flex flex-1 flex-col items-center">
-      qualquer coisa
+      <Editor />
     </section>
   </main>
 );
