@@ -1,5 +1,6 @@
 import { BrowserWindow, Menu, nativeImage, Tray } from "electron";
 import path from "node:path";
+import { IPC } from "~/shared/constants/ipc";
 
 export function createTray(window: BrowserWindow) {
   const icon = nativeImage.createFromPath(
@@ -16,7 +17,7 @@ export function createTray(window: BrowserWindow) {
     {
       label: "Criar novo documento",
       click: () => {
-        window.webContents.send("new-document");
+        window.webContents.send(IPC.ON_NEW_DOCUMENT_REQUEST);
       },
     },
     { type: "separator" },

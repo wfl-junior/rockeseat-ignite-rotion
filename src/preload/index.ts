@@ -37,10 +37,10 @@ const api = {
     },
   },
   onNewDocumentRequest(callback: () => void) {
-    ipcRenderer.on("new-document", callback);
+    ipcRenderer.on(IPC.ON_NEW_DOCUMENT_REQUEST, callback);
 
     return () => {
-      ipcRenderer.off("new-document", callback);
+      ipcRenderer.off(IPC.ON_NEW_DOCUMENT_REQUEST, callback);
     };
   },
 };

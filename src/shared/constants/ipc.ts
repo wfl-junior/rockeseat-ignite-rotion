@@ -6,4 +6,5 @@ export const IPC = {
     UPDATE: "documents: update",
     DELETE: "documents: delete",
   },
+  ON_NEW_DOCUMENT_REQUEST: "new-document",
 };

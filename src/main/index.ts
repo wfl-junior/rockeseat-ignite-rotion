@@ -3,6 +3,7 @@ import { app, BrowserWindow, shell } from "electron";
 import { createFileRoute, createURLRoute } from "electron-router-dom";
 import path from "node:path";
 import "./ipc";
+import { createShortcuts } from "./shortcuts";
 import "./store";
 import { createTray } from "./tray";
 
@@ -28,6 +29,7 @@ function createWindow(): void {
   });
 
   createTray(mainWindow);
+  createShortcuts(mainWindow);
 
   mainWindow.on("ready-to-show", () => {
     mainWindow.show();
