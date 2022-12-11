@@ -5,8 +5,8 @@ import path from "node:path";
 
 function createWindow(): void {
   const mainWindow = new BrowserWindow({
-    width: 900,
-    height: 670,
+    width: 1600,
+    height: 900,
     show: false,
     autoHideMenuBar: true,
     backgroundColor: "#17141f",
