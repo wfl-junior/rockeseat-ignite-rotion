@@ -4,6 +4,7 @@ import { createFileRoute, createURLRoute } from "electron-router-dom";
 import path from "node:path";
 import "./ipc";
 import "./store";
+import "./tray";
 
 function createWindow(): void {
   const mainWindow = new BrowserWindow({
