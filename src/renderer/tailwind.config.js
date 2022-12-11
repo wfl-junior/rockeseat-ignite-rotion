@@ -20,6 +20,20 @@ module.exports = {
           900: "#17141f",
         },
       },
+      keyframes: {
+        "slide-in": {
+          from: { width: 0 },
+          to: { width: "var(--radix-collapsible-content-width)" },
+        },
+        "slide-out": {
+          from: { width: "var(--radix-collapsible-content-width)" },
+          to: { width: 0 },
+        },
+      },
+      animation: {
+        "slide-in": "slide-in 250ms linear",
+        "slide-out": "slide-out 250ms linear",
+      },
     },
   },
   plugins: [
