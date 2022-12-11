@@ -9,7 +9,7 @@ import { Search } from "./Search";
 
 export function Sidebar() {
   const { data } = useQuery(["documents"], async () => {
-    const { documents } = await window.api.getAllDocuments();
+    const { documents } = await window.api.documents.getAll();
     return documents;
   });
 
